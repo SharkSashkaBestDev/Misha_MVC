@@ -28,7 +28,11 @@ public class ReflectionController {
         for (Class c : classes)
             try {
                 c.getMethod("init").invoke(c.newInstance());
-            } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) { System.err.println(e.getMessage()); }
+            } catch (IllegalArgumentException |
+                    IllegalAccessException |
+                    InvocationTargetException |
+                    NoSuchMethodException |
+                    InstantiationException e) { e.printStackTrace(System.err); }
     }
 
     private <T> Set<Class<? extends T>> findAllMatchingTypes(Class<T> toFind) {
